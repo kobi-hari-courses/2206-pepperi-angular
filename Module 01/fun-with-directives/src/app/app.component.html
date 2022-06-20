@@ -1,0 +1,65 @@
+<ng-template #colorsTemplate let-item>
+  <span [style.color]="item">{{item}}</span>
+</ng-template> 
+
+<ng-template #fontsTemplate let-item>
+  <span [style.font-family]="item">{{item}}</span>
+</ng-template>
+
+
+<div class="colors-area">
+  <app-string-selector [options]="colors" [selected]="selectedColor"
+    [template]="colorsTemplate"
+    (userSelection)="selectColor($event)"
+  >
+  </app-string-selector>
+</div>
+<div class="fonts-area">
+  <app-string-selector [options]="fonts" [selected]="selectedFont"
+    (userSelection)="selectFont($event)"
+    [template]="fontsTemplate"
+  >
+  </app-string-selector>
+</div>
+<div class="sizes-area">
+  <app-string-selector [options]="sizes" [selected]="selectedSize"
+    (userSelection)="selectSize($event)"
+  >
+  </app-string-selector>
+</div>
+
+<div class="text-area">
+  <textarea
+    [style.color]="selectedColor"
+    [style.font-family]="selectedFont"
+    [style.font-size]="selectedSize"
+  ></textarea>
+</div>
+
+<div *ngFor="let clr of colors; let i = index">
+  {{i}}: {{clr}}
+</div>
+
+<ng-template ngFor [ngForOf]="colors" let-clr let-i="index">
+  <div>
+    {{i}}: {{clr}}
+  </div>  
+</ng-template>
+
+
+<!-- <div *ngIf="selectedColor === 'green'">Hey we are green</div>
+
+<ng-template [ngIf]="selectedColor === 'green'">
+  <div>Hey we are green</div>
+</ng-template> -->
+
+<!-- <ng-template #moyshe let-data="a" let-clr="color" let-item>
+  <h1>Hello World</h1>
+  <h2 [style.color]="clr">How are you? Data = {{data}}</h2>
+  <h3>The implicit value is: {{item}}</h3>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="moyshe; context:{$implicit: 'abcd', a: 50, color: 'red'}">
+</ng-container>
+<ng-container *ngTemplateOutlet="moyshe; context:{$implicit: 'bla bla bla', a: 100, color: 'blue'}">
+</ng-container>  -->

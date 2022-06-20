@@ -1,0 +1,23 @@
+:host {
+    display: flex;
+    flex-direction: column;
+}
+
+div {
+    border: 1px solid lightgray;
+    margin: 4px;
+    padding-left: 4px;
+    border-radius: 8px;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+div:hover {
+    background: rgba(211, 211, 211, 0.474);
+    transform: scale(1.05);
+}
+
+div.nivchar {
+    background-color: lightgreen;
+}
