@@ -1,0 +1,13 @@
+<div *ngFor="let item of options" 
+    [class.nivchar]="item === selected"
+    (click)="userClickedOption(item)"
+    >
+    <ng-container *ngIf="!template">
+        {{item}}
+    </ng-container>
+    <ng-container *ngIf="template">
+        <ng-container *ngTemplateOutlet="template; context:{$implicit: item}">
+            
+        </ng-container>
+    </ng-container>
+</div>
